@@ -198,7 +198,7 @@ module HDB
 
     # Subtract a set of files from this set
     def subtract!(files)
-      for f1 in files:
+      for f1 in files do
           @files.delete_if { |f2| f2.eql?(f1) }
       end
     end
@@ -357,7 +357,7 @@ module HDB
       @dir = pn.realpath.to_s
       HDB.debug and "Absolute path of archive: #{@dir}"
       return @dirs
-    }
+    end
 
     # Make this object from a directory on this host
     # NOTE: Could theoretically call this with one file instead of a
