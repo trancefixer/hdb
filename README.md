@@ -1,3 +1,84 @@
+FAQ
+===
+
+Terminology
+-----------
+
+*Metadata* is the information about a file - its filename within the archive, the modification time, the SHA-512 hash
+
+*FileList* is a collection of Metadata
+
+*FileSet* is a FileList plus the host, parent directory, and other information specific to the backup, but shared among all the files in the backup
+
+*FileSetGroup* is the collection of saved FileSets, saved in a place known as the groupdir
+
+*groupdir* is where bookkeeping data are stored, defaults to \$HOME/.hdb, or wherever is specified by HDB_GROUPDIR or -g option
+
+*label* is the filename of a FileSet within the groupdir; it is suggested you label your storage media this way. By default it will be an unused integer starting at one.
+
+Features
+--------
+
+-   Works with any medium that shows up as a disk device in Linux
+
+-   Keeps track of what files were stored on what disks
+
+-   Keeps track of what you have already backed up, so that you don't need to back it up again
+
+-   Stores SHA-512 hashes of files that it backs up in the FileSetGroup
+
+-   Stores modification times to avoid costly SHA-512 recalculation
+
+-   Supports LUKS-style cryptsetup for encrypted backups
+
+-   Metadata is stored in ordinary text files, meaning you can manipulate them easily with the Unix utilities.
+
+-   Backup media formatted as a normal file system; no special tools required to access or recover backed-up data
+
+-   Keeps owner, group IDs same in the copy
+
+-   Resets atimes after reading a file
+
+Limitations
+-----------
+
+-   Filtering out files which have already been backed up (FSG filtering) is still under development
+
+-   Only copies files, directories, and symlinks; no special files (devices, pipes, Unix domain sockets, etc.)
+
+-   Does not preserve hard links (they get unlinked during copy)
+
+-   Does not preserve *some* inode access times (directories, symlinks)
+
+-   Does not attempt to pack the maximum amount of data on each medium; simply tries each file in order, skipping ones that don't fit
+
+-   Does not have the ability to store leading directories when backing up a subdirectory; that is, if you back up /home/user, which has three files in it, those three files will appear in the root directory of the backup medium.
+
+-   Does not keep permissions. This is harder than it seems due to umask.
+
+-   Assumes that it should format all media; does not have the ability to update backups already stored on labelled disks
+
+-   Does not deal with newlines in filenames properly
+
+-   Does not preserve ACLs
+
+-   Only targetting Linux right now, but could be ported *relatively* easily (some of the fancier features are more difficult)
+
+-   For a full list, see the code and grep for TODO
+
+Status
+------
+
+-   Still under development - **alpha testers only**
+
+-   The aforementioned [limitations](#Limitations) make it suitable for data files only, not system backups.
+
+-   Tested on datasets of 700,000 files and 700GB.
+
+-   Backups of 700GB of large files can take 16 hours; backups of 700,000 small files can take nearly a week.
+
+-   *Resident* memory size can reach over 1GB on large data sets (e.g. over 1,000,000 files in backed-up media).
+
 Background
 ==========
 
@@ -102,83 +183,6 @@ In this case, you do not want to format the disk, and you merely want to regener
 
 In this case, you formerly backed up, and then want to detect changes to those files on the file system.
 
-Terminology
------------
-
-*Metadata* is the information about a file - its filename within the archive, the modification time, the SHA-512 hash
-
-*FileList* is a collection of Metadata
-
-*FileSet* is a FileList plus the host, parent directory, and other information specific to the backup, but shared among all the files in the backup
-
-*FileSetGroup* is the collection of saved FileSets, saved in a place known as the groupdir
-
-*groupdir* is where bookkeeping data are stored, defaults to \$HOME/.hdb, or wherever is specified by HDB_GROUPDIR or -g option
-
-*label* is the filename of a FileSet within the groupdir; it is suggested you label your storage media this way. By default it will be an unused integer starting at one.
-
-Features
---------
-
--   Works with any medium that shows up as a disk device in Linux
-
--   Keeps track of what files were stored on what disks
-
--   Keeps track of what you have already backed up, so that you don't need to back it up again
-
--   Stores SHA-512 hashes of files that it backs up in the FileSetGroup
-
--   Stores modification times to avoid costly SHA-512 recalculation
-
--   Supports LUKS-style cryptsetup for encrypted backups
-
--   Metadata is stored in ordinary text files, meaning you can manipulate them easily with the Unix utilities.
-
--   Backup media formatted as a normal file system; no special tools required to access or recover backed-up data
-
--   Keeps owner, group IDs same in the copy
-
--   Resets atimes after reading a file
-
-Limitations
------------
-
--   Filtering out files which have already been backed up (FSG filtering) is still under development
-
--   Only copies files, directories, and symlinks; no special files (devices, pipes, Unix domain sockets, etc.)
-
--   Does not preserve hard links (they get unlinked during copy)
-
--   Does not preserve *some* inode access times (directories, symlinks)
-
--   Does not attempt to pack the maximum amount of data on each medium; simply tries each file in order, skipping ones that don't fit
-
--   Does not have the ability to store leading directories when backing up a subdirectory; that is, if you back up /home/user, which has three files in it, those three files will appear in the root directory of the backup medium.
-
--   Does not keep permissions. This is harder than it seems due to umask.
-
--   Assumes that it should format all media; does not have the ability to update backups already stored on labelled disks
-
--   Does not deal with newlines in filenames properly
-
--   Does not preserve ACLs
-
--   Only targetting Linux right now, but could be ported *relatively* easily (some of the fancier features are more difficult)
-
--   For a full list, see the code and grep for TODO
-
-Status
-------
-
--   Still under rapid development - **alpha testers only**
-
--   The aforementioned [limitations](#Limitations) make it suitable for data files only, not system backups.
-
--   Tested on datasets of 700,000 files and 700GB.
-
--   Backups of 700GB of large files can take 16 hours; backups of 700,000 small files can take nearly a week.
-
--   *Resident* memory size can reach over 1GB on large data sets (e.g. over 1,000,000 files in backed-up media).
 
 Ideas
 -----
