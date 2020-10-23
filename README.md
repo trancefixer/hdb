@@ -151,8 +151,8 @@ Features
 
 -   Resets atimes after reading a file
 
-Limitations
------------
+Limitations {#Limitations}
+--------------------------
 
 -   Filtering out files which have already been backed up (FSG filtering) is still under development
 
