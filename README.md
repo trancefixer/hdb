@@ -23,6 +23,12 @@ Usage: hdb [-e] [-d] [-v] [-s] [-p] [-c cmd] [-l label] [-f fstype] [-g groupdir
 Example:
 
 ```
+hdb -l label_001 /dev/sdb $HOME
+```
+
+That would back up your home directory to the second disk on the system.  Maybe one day you can do this on Mac, but not yet:
+
+```
 hdb -m /Volumes -l label_001 /dev/disk1 $HOME
 ```
 
