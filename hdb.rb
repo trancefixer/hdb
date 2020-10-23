@@ -427,7 +427,7 @@ module HDB
     # Compare two FileSets for identical content
     # By analogy with String.eql?
     def eql?(fs)
-      fs and fs.host.eql?(@host) and fs.dir.eql?(@dir) and fs.files.eql?(self.files)
+      fs.host.eql?(@host) and fs.dir.eql?(@dir) and fs.files.eql?(self.files)
     end
 
     # Copy all of the files in file_list onto destdir
@@ -574,7 +574,7 @@ module HDB
     # Remove FileSets from memory that don't match dirs/host provided.
     def filter!(dirs=nil, host=Socket.gethostname)
       # Normalize the input directories
-      dirs ||= Pathname(dirs).realpath.to_s
+      dirs = Pathname(dirs).realpath.to_s
       # Now filter out any fileset which doesn't match what we're backing up
       @filesets.each do |k, v|
         if ((host != nil and not v.host.eql?(host)) or (dirs != nil and dirs.index(v.dir) == nil))
