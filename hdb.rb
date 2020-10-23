@@ -749,7 +749,6 @@ module HDB
       opts.on('-m', '--mpoint DIR', 'Mount point for medium') do |dir|
         o[:mpoint] = dir
       end
-      File.directory? o[:mpoint] or raise "Invalid mountpoint #{o[:mpoint]} (not a directory)"
 
       opts.on('-h', '--help', 'Display this screen') do
         puts opts
@@ -763,6 +762,8 @@ module HDB
       puts opts
       exit(1)
     end
+
+    File.directory? o[:mpoint] or raise "Invalid mountpoint #{o[:mpoint]} (not a directory)"
 
     o[:device_file] = ARGV[0]
 
