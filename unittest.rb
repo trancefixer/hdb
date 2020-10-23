@@ -292,7 +292,7 @@ module HDB
       @fg = FileSetGroup.new('.hdb')
       # Make a directory a containing directory b
       FileUtils.mkdir_p 'a/b'
-      # @fs1 is a fileset containing b
+      # @fs1 is a fileset containing file b
       @fs1 = FileSet.new().make!('a')
       # @fs2 is the same, only for an invalid hostname
       @fs2 = FileSet.new().make!('a')
@@ -307,6 +307,14 @@ module HDB
       @fg.write_fileset(@fs1, 'a')
       @fg.write_fileset(@fs2, 'b')
       @fg.write_fileset(@fs3, 'c')
+    end
+
+    def test_setup
+      assert(@fg)
+      assert(@fs1)
+      assert(@fs2)
+      assert(@fs3)
+      assert(@fg)
     end
 
     def test_groupdir
