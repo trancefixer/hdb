@@ -23,7 +23,7 @@ Usage: hdb [-e] [-d] [-v] [-s] [-p] [-c cmd] [-l label] [-f fstype] [-g groupdir
 Example:
 
 ```
-hdb -m /Volumes /dev/disk1 $HOME
+hdb -m /Volumes -l label_001 /dev/disk1 $HOME
 ```
 
 
