@@ -74,7 +74,7 @@ HDB
 Assumed Problem Domain
 ----------------------
 
-HDB is not for everyone. Due to its current limitations (see [\[subsec:Limitations\]](#subsec:Limitations){reference-type="ref" reference="subsec:Limitations"}), it is not yet suitable as an all-purpose backup utility.
+HDB is not for everyone. Due to its current limitations (see [Limitations]{#Limitations}), it is not yet suitable as an all-purpose backup utility.
 
 ### Backup System
 
@@ -106,7 +106,6 @@ Terminology
 -----------
 
 Metadata
-
 :   is the information about a file - its filename within the archive, the modification time, the SHA-512 hash
 
 FileList
@@ -152,8 +151,8 @@ Features
 
 -   Resets atimes after reading a file
 
-Limitations[\[subsec:Limitations\]]{#subsec:Limitations label="subsec:Limitations"}
------------------------------------------------------------------------------------
+Limitations
+-----------
 
 -   Filtering out files which have already been backed up (FSG filtering) is still under development
 
@@ -184,7 +183,7 @@ Status
 
 -   Still under rapid development - **alpha testers only**
 
--   The aforementioned limitations (see [\[subsec:Limitations\]](#subsec:Limitations){reference-type="ref" reference="subsec:Limitations"}) make it suitable for data files only, not system backups.
+-   The aforementioned limitations (see [Limitations]{#Limitations}) make it suitable for data files only, not system backups.
 
 -   Tested on datasets of 700,000 files and 700GB.
 
