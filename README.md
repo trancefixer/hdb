@@ -74,7 +74,7 @@ HDB
 Assumed Problem Domain
 ----------------------
 
-HDB is not for everyone. Due to its current limitations (see [Limitations](#Limitations)), it is not yet suitable as an all-purpose backup utility.
+HDB is not for everyone. Due to its current [limitations](#Limitations), it is not yet suitable as an all-purpose backup utility.
 
 ### Backup System
 
@@ -183,7 +183,7 @@ Status
 
 -   Still under rapid development - **alpha testers only**
 
--   The aforementioned limitations (see [Limitations](#Limitations)) make it suitable for data files only, not system backups.
+-   The aforementioned [limitations](#Limitations) make it suitable for data files only, not system backups.
 
 -   Tested on datasets of 700,000 files and 700GB.
 
