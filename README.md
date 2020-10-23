@@ -105,28 +105,17 @@ In this case, you formerly backed up, and then want to detect changes to those f
 Terminology
 -----------
 
-Metadata
-:   is the information about a file - its filename within the archive, the modification time, the SHA-512 hash
+*Metadata* is the information about a file - its filename within the archive, the modification time, the SHA-512 hash
 
-FileList
+*FileList* is a collection of Metadata
 
-:   is a collection of Metadata
+*FileSet* is a FileList plus the host, parent directory, and other information specific to the backup, but shared among all the files in the backup
 
-FileSet
+*FileSetGroup* is the collection of saved FileSets, saved in a place known as the groupdir
 
-:   is a FileList plus the host, parent directory, and other information specific to the backup, but shared among all the files in the backup
+*groupdir* is where bookkeeping data are stored, defaults to \$HOME/.hdb, or wherever is specified by HDB_GROUPDIR or -g option
 
-FileSetGroup
-
-:   is the collection of saved FileSets, saved in a place known as the groupdir
-
-groupdir
-
-:   is where bookkeeping data are stored, defaults to \$HOME/.hdb, or wherever is specified by HDB_GROUPDIR or -g option
-
-label
-
-:   is the filename of a FileSet within the groupdir; it is suggested you label your storage media this way. By default it will be an unused integer starting at one.
+*label* is the filename of a FileSet within the groupdir; it is suggested you label your storage media this way. By default it will be an unused integer starting at one.
 
 Features
 --------
