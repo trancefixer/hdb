@@ -3,6 +3,7 @@
 # These are the unit tests that require you to be root to run them
 # TODO: Remove directory assumptions (like /mnt) and Linux-isms (ext2, losetup)
 
+$LOAD_PATH << File.join(File.dirname(__FILE__))
 require 'hdb'
 
 require 'test/unit'

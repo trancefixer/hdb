@@ -1,5 +1,6 @@
 #! /usr/bin/ruby
 
+$LOAD_PATH << File.join(File.dirname(__FILE__))
 require 'hdb'
 
 require 'test/unit'
