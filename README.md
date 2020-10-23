@@ -1,6 +1,33 @@
 FAQ
 ===
 
+Usage
+-----
+
+```
+Usage: hdb [-e] [-d] [-v] [-s] [-p] [-c cmd] [-l label] [-f fstype] [-g groupdir] [-m mpoint] /dev/sdX /path/to/backup
+    -e, --encrypt                    Encrypt the hard drive medium using LUKS cryptsetup
+        --lookup                     Look up metadata (is very slow)
+    -d, --debug                      Turn on debugging information
+    -v, --verbose                    Output more information
+    -s, --skipeject                  Skip ejecting the medium on successful completion
+    -p, --profile                    Profile the code
+    -c, --command CMD                Command to perform (CMD=create, ...)
+    -l, --label LABEL                Label for human consumption
+    -f, --fstype TYPE                Type of file system
+    -g, --groupdir DIR               Group metadata directory
+    -m, --mpoint DIR                 Mount point for medium
+    -h, --help                       Display this screen
+```
+
+Example:
+
+```
+hdb -m /Volumes /dev/disk1 $HOME
+```
+
+
+
 Terminology
 -----------
 
